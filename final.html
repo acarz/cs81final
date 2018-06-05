@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CS81 Final</title>
+<!-- 
+`in this final project we created an invoice. Drop down lists comes from a json file
+when we enter quantity an unit price it automatically calculates subtotal, tax and grand total
+-->
+<style type="text/css">
+	
+	.borders{
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 5px solid #ffea00;
+  width: 60%; 
+  align-content: center
+}
+</style>
+	<script>
+		function calculate1(){
+			form1.total1.value=form1.quantity1.value*form1.unit_price1.value;		
+			calculate_total();
+		}
+
+		function calculate2(){
+			form1.total2.value=form1.quantity2.value*form1.unit_price2.value;	
+			calculate_total();
+		}
+		function calculate3(){
+			form1.total3.value=form1.quantity3.value*form1.unit_price3.value;	
+			calculate_total();
+		}
+
+		function calculate4(){
+			form1.total4.value=form1.quantity4.value*form1.unit_price4.value;	
+			calculate_total();
+		}
+
+		function calculate5(){
+			form1.total5.value=form1.quantity5.value*form1.unit_price5.value;	
+			calculate_total();
+		}
+		function calculate_total(){
+			form1.subtotal.value=form1.total1.value*1+form1.total2.value*1+form1.total3.value*1+form1.total4.value*1+form1.total5.value;
+			form1.grand_total.value=form1.subtotal.value+form1.tax.value;
+			form1.tax.value=form1.subtotal.value*0.0925
+		}
+	</script>
+
+<script>
+<!-- 
+	//if you press enter, it does not submit the form
+function stopRKey(evt) {
+   var evt = (evt) ? evt : ((event) ? event : null);
+   var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+   if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+}
+
+document.onkeypress = stopRKey; 
+-->
+</script>
+
+<script>
+  myObj = {
+    
+    "products":[ "Acer Windows Laptop", "Macbook Air", "Microsoft Surface Pro","Samsung Galaxy Note Tablet","Apple Ipad"]
+};
+       
+    
+	</script>
+</head>
+
+<body>
+<div id="container" class="borders">
+<form id="form1" name="form1" method="post">
+  <table width="100%" border="0" cellpadding="5" cellspacing="5">
+    <tbody>
+      <tr>
+        <td width="10%">Quantity</td>
+        <td width="45%">Product</td>
+        <td width="24%">Unit Price</td>
+        <td width="18%">Total</td>
+        <td width="3%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="quantity1" type="text" id="quantity1" size="5" onkeyup="calculate1()"></td>
+		  <td><select name="pr1">
+		  	<option>Select a Product</option>>
+		  	<script>
+		  		
+		  		for (i in myObj.products) {
+		  			document.write("<option value='"+myObj.products[i]+"'>"+myObj.products[i]+"</option>")
+
+		  		}
+
+		  	</script>
+			  
+		  </select></td>
+        <td><input type="text" name="unit_price1" id="unit_price1" onkeyup="calculate1()"></td>
+        <td><input type="text" name="total1" id="total1"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="quantity2" type="text" id="quantity2" size="5" onkeyup="calculate2()"></td>
+        <td><select name="pr2">
+		  	<option>Select a Product</option>>
+		  	<script>
+		  		
+		  		for (i in myObj.products) {
+		  			document.write("<option value='"+myObj.products[i]+"'>"+myObj.products[i]+"</option>")
+
+		  		}
+
+		  	</script>
+			  
+		  </select></td>
+        <td><input type="text" name="unit_price2" id="unit_price2" onkeyup="calculate2()"></td>
+        <td><input type="text" name="total2" id="total2"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="quantity3" type="text" id="quantity3" size="5" onkeyup="calculate3()"></td>
+        <td><select name="pr3">
+		  	<option>Select a Product</option>>
+		  	<script>
+		  		
+		  		for (i in myObj.products) {
+		  			document.write("<option value='"+myObj.products[i]+"'>"+myObj.products[i]+"</option>")
+
+		  		}
+
+		  	</script>
+			  
+		  </select></td>
+        <td><input type="text" name="unit_price3" id="unit_price3" onkeyup="calculate3()"></td>
+        <td><input type="text" name="total3" id="total3"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="quantity4" type="text" id="quantity4" size="5" onkeyup="calculate4()"></td>
+        <td><select name="pr4">
+		  	<option>Select a Product</option>>
+		  	<script>
+		  		
+		  		for (i in myObj.products) {
+		  			document.write("<option value='"+myObj.products[i]+"'>"+myObj.products[i]+"</option>")
+
+		  		}
+
+		  	</script>
+			  
+		  </select></td>
+        <td><input type="text" name="unit_price4" id="unit_price4" onkeyup="calculate4()"></td>
+        <td><input type="text" name="total4" id="total4"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="quantity5" type="text" id="quantity5" size="5" onkeyup="calculate5()"></td>
+        <td><select name="pr5">
+		  	<option>Select a Product</option>>
+		  	<script>
+		  		
+		  		for (i in myObj.products) {
+		  			document.write("<option value='"+myObj.products[i]+"'>"+myObj.products[i]+"</option>")
+
+		  		}
+
+		  	</script>
+			  
+		  </select></td>
+        <td><input type="text" name="unit_price5" id="unit_price5" onkeyup="calculate5()"></td>
+        <td><input type="text" name="total5" id="total5"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Subtotal</td>
+        <td><input type="text" name="subtotal" id="subtotal"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Tax(9.25%)</td>
+        <td><input type="text" name="tax" id="tax"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Grand Total</td>
+        <td><input type="text" name="grand_total" id="grand_total"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td><input type="submit" name="submit" id="submit" value="Submit"> <input type="reset" name="reset" id="reset" value="Reset"></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+
+</body>
+</html>
